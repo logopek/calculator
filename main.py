@@ -82,10 +82,11 @@ class Main(QtWidgets.QWidget, Ui_Form):
         self.te_res.setText(self.te_res.text()[:-1])
 
     def result(self):
-        if not self.te_res.text() == "Division by zero":
-            self.label_res.setText(self.te_res.text())
+        t = self.te_res.text()
+        if not t == "Division by zero":
+            self.label_res.setText(t)
             try:
-                self.te_res.setText(str(numexpr.evaluate(self.te_res.text())))
+                self.te_res.setText(str(numexpr.evaluate(t.replace("^", "**"))))
             except ZeroDivisionError:
                 self.te_res.setText("Division by zero")
 
