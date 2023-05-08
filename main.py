@@ -67,8 +67,8 @@ class Main(QtWidgets.QWidget, Ui_Form):
         else:
             temp = str(string_to_add)
 
-        temp = re.sub("^0+.", "", temp)
-        temp = re.sub("([\+-/\*])+0", "\g<1>", temp)
+        temp = re.sub("^00+.", "0", temp)
+        temp = re.sub("([\+-/\*])+00", "\g<1>0", temp)
         temp = re.sub("([\+-/\*])+[\+-/\*]", "\g<1>", temp)
         temp = re.sub("^[\*/\^]", "", temp)
         temp = re.sub("\.\.", ".", temp)
